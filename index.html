@@ -3,8 +3,49 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ecommerce Sunglasses & Shopping Cart</title>
+		<title>Ecommerce Véline</title>
 		<link rel="stylesheet" href="style.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+			rel="stylesheet"
+		/>
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<a href="#" class="logo">Véline</a>
+			<div id="cart-icon">
+				<i class="ri-shopping-bag-line"></i>
+				<span class="cart-item-count"></span>
+			</div>
+		</header>
+
+		<!-- Cart -->
+		<div class="cart">
+			<h2 class="cart-title">Your Cart</h2>
+			<div class="cart-content">
+				<img src="images/jewelry_1.jpg" alt="cart image" />
+				<div class="cart-detail">
+					<h2 class="cart-product-title">Véda</h2>
+					<span class="cart-price">$100</span>
+					<div class="cart-quantity">
+						<button id="decrement">-</button>
+						<span class="number">1</span>
+						<button id="increment">+</button>
+					</div>
+					<i class="ri-delete-bin-line cart-remove"></i>
+				</div>
+			</div>
+			<div class="total">
+				<div class="total-title">Total</div>
+				<div class="total-price">$0</div>
+			</div>
+		</div>
+
+		<!-- All Products -->
+		<section class="shop">
+			<h1 class="section-title">Shop Products</h1>
+			<div class="product-content"></div>
+		</section>
+		<script src="script.js"></script>
+	</body>
 </html>
