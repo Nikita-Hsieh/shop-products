@@ -101,4 +101,72 @@ header {
   font-size: 1.25rem;
   color: white;
   cursor: pointer;
+}
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 65px 20px 40px;
+  z-index: 100;
+  overflow: auto;
+}
+.cart .cart-title {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+.cart .cart-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.cart .cart-box img {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
+}
+.cart .cart-detail {
+  display: grid;
+  gap: 8px;
+  margin-right: auto;
+}
+.cart .cart-product-title {
+  font-size: 16px;
+  line-height: 1;
+}
+.cart .cart-price {
+  font-weight: 500;
+}
+.cart .cart-quantity {
+  display: flex;
+  width: 100px;
+  border: 1px solid #999;
+  border-radius: 6px;
+}
+.cart .cart-quantity button {
+  background: transparent;
+  width: 30px;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+.cart .cart-quantity #decrement {
+  color: #999;
+}
+.cart .cart-quantity .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  cursor: default;
 }/*# sourceMappingURL=style.css.map */
