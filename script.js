@@ -30,7 +30,6 @@ products.forEach((product) => {
 })
 
 //cart
-
 const cartIcon = document.querySelector('#cart-icon')
 const cart = document.querySelector('.cart')
 const cartClose = document.querySelector('#cart-close')
@@ -52,6 +51,15 @@ const addToCart = (productBox) => {
 	const productImgSrc = productBox.querySelector('img').src
 	const productTitle = productBox.querySelector('.product-title').textContent
 	const productPrice = productBox.querySelector('.price').textContent
+
+	const cartItems = cartContent.querySelectorAll('.cart-product-title')
+	for (let item of cartItems) {
+		if (item.textContent === productTitle) {
+			alert('This item is already in the cart')
+			return
+		}
+	}
+
 	const cartBox = document.createElement('div')
 	cartBox.classList.add('cart-box')
 	cartBox.innerHTML = `
@@ -65,8 +73,25 @@ const addToCart = (productBox) => {
 							<button id="increment">+</button>
 						</div>
 					</div>
-					<i class="ri-delete-bin- line cart-remove"></i>
+					<i class="ri-delete-bin-line cart-remove"></i>
 	`
 
 	cartContent.appendChild(cartBox)
+
+	cartBox.querySelector('.cart-remove').addEventListener('click', () => {
+		cartBox.remove()
+	})
+
+	cartBox.querySelector('.cart-quantity').addEventListener('click', (event) => {
+		const numberElement = cartBox.querySelector('.number')
+		let quantity = parseInt(numberElement.textContent)
+
+		if (event.target.id === 'decrement' && quantity > 1) {
+			quantity--
+		} else if (event.target.id === 'increment') {
+			quantity++
+		}
+
+		numberElement.textContent = quantity
+	})
 }
