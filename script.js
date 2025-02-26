@@ -30,7 +30,6 @@ products.forEach((product) => {
 })
 
 //cart
-
 const cartIcon = document.querySelector('#cart-icon')
 const cart = document.querySelector('.cart')
 const cartClose = document.querySelector('#cart-close')
@@ -122,7 +121,7 @@ const updateTotalPrice = () => {
 	totalPriceElement.textContent = `$${totalPrice}`
 }
 
-// CartIcon Chip Number
+// CartIcon Badge Number
 let cartItemCount = 0
 const updateCartItemCount = (change) => {
 	cartItemCount += change
@@ -135,3 +134,20 @@ const updateCartItemCount = (change) => {
 		cartItemCountBadge.textContent = ''
 	}
 }
+
+//Buy
+const buyNowButton = document.querySelector('.btn-buy')
+buyNowButton.addEventListener('click', () => {
+	const cartBoxs = cartContent.querySelectorAll('.cart-box')
+	if (cartBoxs.length === 0) {
+		alert('No item in the cart')
+		return
+	}
+	cartBoxs.forEach((cartBox) => {
+		cartBox.remove()
+	})
+	cartItemCount = 0
+	updateCartItemCount(0)
+	updateTotalPrice()
+	alert('Thank you for your purchase')
+})

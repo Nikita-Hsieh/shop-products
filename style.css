@@ -206,4 +206,13 @@ header {
   color: #fff;
   margin: 20px auto 0;
   cursor: pointer;
+}
+
+@media screen and (max-width: 360px) {
+  .product-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .cart {
+    width: 100%;
+  }
 }/*# sourceMappingURL=style.css.map */

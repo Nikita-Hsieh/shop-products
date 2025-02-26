@@ -237,3 +237,13 @@ header {
 		cursor: pointer;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.product-content {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+
+	.cart {
+		width: 100%;
+	}
+}
