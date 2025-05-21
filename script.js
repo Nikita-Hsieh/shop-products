@@ -1,12 +1,12 @@
 const products = [
-	{ name: 'Véda', price: 100, image: 'images/jewelry_1.jpg' },
-	{ name: 'Emberlyn', price: 180, image: 'images/jewelry_2.jpg' },
-	{ name: 'Dewdrop', price: 200, image: 'images/jewelry_3.jpg' },
-	{ name: 'Aurumé', price: 300, image: 'images/jewelry_4.jpg' },
-	{ name: 'Celestia', price: 170, image: 'images/jewelry_5.jpg' },
-	{ name: 'Lustrella', price: 210, image: 'images/jewelry_6.jpg' },
-	{ name: 'Solstice', price: 430, image: 'images/jewelry_7.jpg' },
-	{ name: 'Eterna', price: 190, image: 'images/jewelry_8.jpg' },
+	{ name: 'Véda', price: 100, image: './images/jewelry_1.jpg' },
+	{ name: 'Emberlyn', price: 180, image: './images/jewelry_2.jpg' },
+	{ name: 'Dewdrop', price: 200, image: './images/jewelry_3.jpg' },
+	{ name: 'Aurumé', price: 300, image: './images/jewelry_4.jpg' },
+	{ name: 'Celestia', price: 170, image: './images/jewelry_5.jpg' },
+	{ name: 'Lustrella', price: 210, image: './images/jewelry_6.jpg' },
+	{ name: 'Solstice', price: 430, image: './images/jewelry_7.jpg' },
+	{ name: 'Eterna', price: 190, image: './images/jewelry_8.jpg' },
 ]
 
 const productContainer = document.querySelector('.product-content')
@@ -27,6 +27,11 @@ products.forEach((product) => {
 	`
 
 	productContainer.appendChild(productBox)
+
+	productBox.querySelector('.add-cart').addEventListener('click', (event) => {
+		const productBox = event.target.closest('.product-box')
+		addToCart(productBox)
+	})
 })
 
 //cart
@@ -36,14 +41,6 @@ const cartClose = document.querySelector('#cart-close')
 
 cartIcon.addEventListener('click', () => cart.classList.add('active'))
 cartClose.addEventListener('click', () => cart.classList.remove('active'))
-
-const addCartButtons = document.querySelectorAll('.add-cart')
-addCartButtons.forEach((button) => {
-	button.addEventListener('click', (event) => {
-		const productBox = event.target.closest('.product-box')
-		addToCart(productBox)
-	})
-})
 
 const cartContent = document.querySelector('.cart-content')
 
@@ -87,17 +84,19 @@ const addToCart = (productBox) => {
 	cartBox.querySelector('.cart-quantity').addEventListener('click', (event) => {
 		const numberElement = cartBox.querySelector('.number')
 		const decrementButton = cartBox.querySelector('#decrement')
-		let quantity = numberElement.textContent
-
+		let quantity = parseInt(numberElement.textContent)
 		if (event.target.id === 'decrement' && quantity > 1) {
 			quantity--
-			if (quantity === 1) {
+			if (quantity == 1) {
 				decrementButton.style.color = '#999'
 			}
 		} else if (event.target.id === 'increment') {
 			quantity++
-			decrementButton.style.color = '#333'
+			if (quantity > 1) {
+				decrementButton.style.color = '#333'
+			}
 		}
+
 		numberElement.textContent = quantity
 		updateTotalPrice()
 	})
